@@ -1,0 +1,99 @@
+from PyQt5.QtCore import Qt, QTime, QTimer
+from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout, QLineEdit
+from instr import *
+from text import *
+from test import *
+
+win_width = 1080
+win_height = 720
+win_x = 100
+win_y = 50
+
+class Experiment():
+    
+    def __init__(self,true_answer ):
+        self.true_answer = true_answer
+        true_answer = 0
+
+class TestWin(QWidget):
+
+    def __init__(self):
+        super().__init__()
+        self.set_appear()
+        self.initUI()
+        self.connects()
+        self.show()
+
+    def initUI(self):
+        self.question = QLabel(question1)
+        self.btn_test1 = QPushButton(The_correct_answer_to_the_question1, self)
+        if self.btn_test1.clicked.connect(self.next_click) == True:
+            true_answer += 1
+        self.btn_test2 = QPushButton(The_uncorrect_answer_to_the_question1_1, self)
+        
+        self.btn_test3 = QPushButton(The_uncorrect_answer_to_the_question1_2, self)
+        
+        self.btn_test4 = QPushButton(The_uncorrect_answer_to_the_question1_3, self)
+        
+
+
+        #self.text_name = QLabel(txt_name)
+        #self.text_age = QLabel(txt_age)
+        #self.text_test1 = QLabel(txt_test1)
+        #self.text_test2 = QLabel(txt_test2)
+        #self.text_test3 = QLabel(txt_test3)
+        
+
+        #self.line_name = QLineEdit(txt_hintname)
+        #self.line_age = QLineEdit(txt_hintage)
+        #self.line_test1 = QLineEdit(txt_hinttest1)
+        #self.line_test2 = QLineEdit(txt_hinttest2)
+        #self.line_test3 = QLineEdit(txt_hinttest3)
+
+        self.h_line = QVBoxLayout()
+        
+
+        #self.r_line.addWidget(self.text_name, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.line_name, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.text_age, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.line_age, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.text_test1, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.btn_test1, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.line_test1, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.text_test2, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.btn_test2, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.text_test3, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.btn_test3, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.line_test2, alignment = Qt.AlignLeft)
+        #self.r_line.addWidget(self.line_test3, alignment = Qt.AlignLeft)
+        self.h_line.addWidget(self.question, alignment = Qt.AlignCenter)
+        self.h_line.addWidget(self.btn_test1, alignment = Qt.AlignCenter)
+        self.h_line.addWidget(self.btn_test2, alignment = Qt.AlignCenter)
+        self.h_line.addWidget(self.btn_test3, alignment = Qt.AlignCenter)
+        self.h_line.addWidget(self.btn_test4, alignment = Qt.AlignCenter)
+
+        self.setLayout(self.h_line)
+
+    def next_click(self):
+        self.hide()
+        self.tw = FinalWin()
+        
+        
+    def connects(self):
+        self.btn_test1.clicked.connect(self.next_click)
+        if self.btn_test1.clicked.connect(self.next_click) == True:
+            true_answer += 1
+            return true_answer
+        self.btn_test2.clicked.connect(self.next_click)
+        self.btn_test3.clicked.connect(self.next_click)
+        self.btn_test4.clicked.connect(self.next_click)
+        
+
+    def set_appear(self):
+            self.setWindowTitle("Викторина")
+            self.resize(win_width, win_height)
+            self.move(win_x, win_y)
+ 
+    
+
