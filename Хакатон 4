@@ -1,0 +1,70 @@
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout
+from instr import *
+from second_win import *
+
+win_width = 1080
+win_height = 720
+win_x = 100
+win_y = 50
+
+
+class FinalWin(QWidget):
+
+    def __init__(self):
+        super().__init__()
+        self.set_appear()
+        self.initUI()
+        self.show()
+    def initUI(self):
+        self.stroka = QLabel(self.true_answer)
+        self.true_answer = true_answer
+        if true_answer == 10:
+            procent = "100%"
+        elif true_answer == 9:
+            procent = "90%"
+        elif true_answer == 8:
+            procent = "80%"
+        elif true_answer == 7:
+            procent = "70%"
+        elif true_answer == 6:
+            procent = "60%"
+        elif true_answer == 5:
+            procent = "50%"
+        elif true_answer == 4:
+            procent = "40%" 
+        elif true_answer == 3:
+            procent = "30%"
+        elif true_answer == 2:
+            procent = "20%"
+        elif true_answer == 1:
+            procent = "10%"
+        else:
+            procent = "0%"
+        return procent
+        self.procent = QLabel(procent)
+        self.osn_line = QVBoxLayout()
+        self.osn_line.addWidget(self.stroka)
+        self.osn_line.addWidget(self.procent)
+
+        self.setLayout(self.osn_line)
+        
+        
+
+    def set_appear(self):
+
+        self.setWindowTitle("Результат")
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)
+
+    
+        
+
+
+
+        
+
+
+
+
+    
